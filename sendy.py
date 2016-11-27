@@ -12,7 +12,12 @@ client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET','POST'])
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/send', methods=['GET','POST'])
 def send():
     if request.method == 'POST':
         number = request.form['number']
@@ -25,7 +30,7 @@ def send():
 
         return render_template('success.html', number=number)
 
-    return render_template('index.html')
+    return render_template('send.html')
 # @app.route("/sms", methods=['GET', 'POST'])
 # def index():
 # def hello_monkey():
@@ -51,6 +56,9 @@ def send():
 # @app.route('/success')
 # def success():
 #     return render_template('success.html')
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
 if __name__ == "__main__":
     app.run(debug=True)
