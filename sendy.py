@@ -25,7 +25,7 @@ def send():
 
         return render_template('success.html', number=number)
 
-    return render_template('/index.html')
+    return render_template('index.html')
 # @app.route("/sms", methods=['GET', 'POST'])
 # def index():
 # def hello_monkey():
